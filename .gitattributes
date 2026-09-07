@@ -1,0 +1,13 @@
+# Normalize line endings on commit, and check Windows script files out as CRLF
+# regardless of the cloning machine's core.autocrlf setting. This also applies
+# to the ZIP GitHub builds with git archive, so a downloaded .cmd arrives with
+# the endings cmd.exe expects.
+
+* text=auto
+
+*.ps1  text eol=crlf
+*.psm1 text eol=crlf
+*.psd1 text eol=crlf
+*.cmd  text eol=crlf
+*.bat  text eol=crlf
+*.vbs  text eol=crlf

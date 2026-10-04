@@ -14,6 +14,7 @@ README carrying the full write-up. Scripts are written for Windows PowerShell
 | [LDAPClient-Hardening](LDAPClient-Hardening/) | Requires LDAP client signing and encryption on Windows 11 24H2+ |
 | [LSA-Protection](LSA-Protection/) | Checks and enables LSA Protection (`RunAsPPL`) with triage logging |
 | [TimeZone-Auto](TimeZone-Auto/) | Turns on "Set time zone automatically" device-wide |
+| [ServerBackup-FailureAlert](ServerBackup-FailureAlert/) | Emails an alert when Windows Server Backup logs a failure |
 
 ## WaveLink-EarlyStart
 
@@ -89,6 +90,18 @@ change the time zone.
 
 Full write-up, Intune settings, verification, and rollback:
 [TimeZone-Auto/README.md](TimeZone-Auto/README.md)
+
+## ServerBackup-FailureAlert
+
+Windows Server Backup logs failures to its event log and does nothing else. A
+scheduled task triggered by Critical and Error events in that log runs this
+script, which emails an HTML alert with the server name and the event details
+through an authenticated SMTP relay (written for Amazon SES). Running the task
+by hand sends a test email. Unlike the Intune scripts above, this is set up
+manually on each server.
+
+Full write-up, SES settings, task setup, unblocking, and testing:
+[ServerBackup-FailureAlert/README.md](ServerBackup-FailureAlert/README.md)
 
 ## License
 
